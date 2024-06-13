@@ -5,7 +5,7 @@ WORKDIR /app
 
 ADD . /app
 
-RUN pip install tqdm notebook==7.1.2 openai elasticsearch pandas scikit-learn
+RUN pip install tqdm notebook==7.1.2 openai groq elasticsearch pandas scikit-learn
 
 
 EXPOSE 8888

@@ -1,0 +1,20 @@
+Q1. 0.1.47
+Q2.
+Q3.
+Sure, here's the answer to the question:
+
+10 * 10 = 100.
+
+I hope this helps! Let me know if you have any 
+other questions.
+Q4. 1.7G
+1.6G    ./ollama_files/models/blobs
+8.0K    ./ollama_files/models/manifests/registry.ollama.ai/library/gemma
+12K     ./ollama_files/models/manifests/registry.ollama.ai/library
+16K     ./ollama_files/models/manifests/registry.ollama.ai
+20K     ./ollama_files/models/manifests
+1.6G    ./ollama_files/models
+1.6G    ./ollama_files
+1.6G    .
+
+Q5

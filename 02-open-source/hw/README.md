@@ -1,3 +1,4 @@
+<!-- conda activate llm-env -->
 ## Q1
 ```bash
 docker run -it \

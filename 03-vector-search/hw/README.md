@@ -1,4 +1,16 @@
-# Q3
+# Introduction
+
+To run the environment, just run
+
+```bash
+docker-compose up
+```
+
+```bash
+docker cp jupyter:/usr/src/app/hw_sementic_search_docker-compose-container.ipynb .
+```
+
+##  Q3
 Run Elastic Search
 ```bash
 docker run -it \

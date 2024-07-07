@@ -6,6 +6,10 @@ To run the environment, just run
 docker-compose up
 ```
 
+```bash
+docker-compose down
+```
+
 ##  Q3
 Run Elastic Search
 ```bash

@@ -1,6 +1,6 @@
-Q1. 948
-Q2. [120, 59.76]
-Q3. 384
-Q4. If the pre-trained model in unavailable, skip this statement
-Q5. [0.74, 'General course-related questions', 'data-engineering-zoomcamp']
-Q6. Yes
+Q1. 0.07
+Q2. (375, 768)
+Q3. 0.65
+Q4. 0.93
+Q5. ee58a693
+Q6. 0.93

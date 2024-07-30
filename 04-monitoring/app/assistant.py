@@ -6,7 +6,7 @@ from openai import OpenAI
 
 from elasticsearch import Elasticsearch
 from sentence_transformers import SentenceTransformer
-
+from elasticsearch.exceptions import NotFoundError
 
 ELASTIC_URL = os.getenv("ELASTIC_URL", "http://elasticsearch:9200")
 OLLAMA_URL = os.getenv("OLLAMA_URL", "http://ollama:11434/v1/")
@@ -41,7 +41,80 @@ def elastic_search_text(query, course, index_name="course-questions"):
     return [hit["_source"] for hit in response["hits"]["hits"]]
 
 
+# def elastic_search_knn(field, vector, course, index_name="course-questions"):
+#     knn = {
+#         "field": field,
+#         "query_vector": vector,
+#         "k": 5,
+#         "num_candidates": 10000,
+#         "filter": {"term": {"course": course}},
+#     }
+
+#     search_query = {
+#         "knn": knn,
+#         "_source": ["text", "section", "question", "course", "id"],
+#     }
+
+#     es_results = es_client.search(index=index_name, body=search_query)
+
+#     return [hit["_source"] for hit in es_results["hits"]["hits"]]
+
+
+
+def check_index_exists(index_name):
+    return es_client.indices.exists(index=index_name)
+
+def create_index(index_name):
+    index_body = {
+        "settings": {
+            "number_of_shards": 1,
+            "number_of_replicas": 0
+        },
+        "mappings": {
+            "properties": {
+                "text": {"type": "text"},
+                "section": {"type": "text"},
+                "question": {"type": "text"},
+                "course": {"type": "keyword"},
+                "id": {"type": "keyword"},
+                "question_text_vector": {
+                    "type": "dense_vector",
+                    "dims": 768,
+                    "index": True,  # Ensure this is set to true
+                    "similarity": "cosine"
+                }
+            }
+        }
+    }
+    es_client.indices.create(index=index_name, body=index_body)
+
+def elastic_search_text(query, course, index_name="course-questions"):
+    if not check_index_exists(index_name):
+        create_index(index_name)
+    
+    search_query = {
+        "size": 5,
+        "query": {
+            "bool": {
+                "must": {
+                    "multi_match": {
+                        "query": query,
+                        "fields": ["question^3", "text", "section"],
+                        "type": "best_fields",
+                    }
+                },
+                "filter": {"term": {"course": course}},
+            }
+        },
+    }
+
+    response = es_client.search(index=index_name, body=search_query)
+    return [hit["_source"] for hit in response["hits"]["hits"]]
+
 def elastic_search_knn(field, vector, course, index_name="course-questions"):
+    if not check_index_exists(index_name):
+        create_index(index_name)
+    
     knn = {
         "field": field,
         "query_vector": vector,
@@ -58,7 +131,6 @@ def elastic_search_knn(field, vector, course, index_name="course-questions"):
     es_results = es_client.search(index=index_name, body=search_query)
 
     return [hit["_source"] for hit in es_results["hits"]["hits"]]
-
 
 def build_prompt(query, search_results):
     prompt_template = """

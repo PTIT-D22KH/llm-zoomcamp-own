@@ -85,7 +85,7 @@ def index_documents(es_client, documents, model):
 
 
 def main():
-    # print("Starting the indexing process...")
+    print("Starting the indexing process...")
 
     # documents = fetch_documents()
     # ground_truth = fetch_ground_truth()

@@ -45,7 +45,7 @@ services:
     restart: always
     networks:
       - app-network
-
+    mem_limit: 4GB
 networks:
   app-network:
     driver: bridge

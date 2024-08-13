@@ -22,7 +22,8 @@ blocks:
           method: GET
           parser: null
           timeout: 30
-  downstream_blocks: []
+  downstream_blocks:
+  - galvanizing_continuum
   executor_config: null
   executor_type: local_python
   groups:
@@ -31,7 +32,7 @@ blocks:
   language: python
   name: Wondrous fission
   retry_config: null
-  status: not_executed
+  status: executed
   timeout: null
   type: data_loader
   upstream_blocks: []
@@ -41,7 +42,8 @@ blocks:
   configuration:
     file_source:
       path: rager/transformers/galvanizing_continuum.py
-  downstream_blocks: []
+  downstream_blocks:
+  - primordial_catalyst
   executor_config: null
   executor_type: local_python
   groups:
@@ -50,10 +52,11 @@ blocks:
   language: python
   name: Galvanizing continuum
   retry_config: null
-  status: not_executed
+  status: executed
   timeout: null
   type: transformer
-  upstream_blocks: []
+  upstream_blocks:
+  - wondrous_fission
   uuid: galvanizing_continuum
 - all_upstream_blocks_executed: true
   color: null
@@ -75,10 +78,11 @@ blocks:
   language: python
   name: Primordial catalyst
   retry_config: null
-  status: not_executed
+  status: failed
   timeout: null
   type: transformer
-  upstream_blocks: []
+  upstream_blocks:
+  - galvanizing_continuum
   uuid: primordial_catalyst
 - all_upstream_blocks_executed: true
   color: null
@@ -103,6 +107,44 @@ blocks:
   type: transformer
   upstream_blocks: []
   uuid: enchanting_paradox
+- all_upstream_blocks_executed: true
+  color: null
+  configuration:
+    file:
+      content: null
+      extension: py
+      language: python
+      modified_timestamp: 1723518463
+      name: awe_inspiring_warp.py
+      output: null
+      path: /home/src/llm/rager/data_exporters/awe_inspiring_warp.py
+      relative_path: llm/rager/data_exporters/awe_inspiring_warp.py
+      size: 2054
+    file_source:
+      path: rager/data_exporters/awe_inspiring_warp.py
+    templates:
+      elasticsearch:
+        variables:
+          connection_string: http://elasticsearch:9200
+          dimensions: null
+          index_name: documents
+          number_of_replicas: 0
+          number_of_shards: 1
+          vector_column_name: embedding
+  downstream_blocks: []
+  executor_config: null
+  executor_type: local_python
+  groups:
+  - vector_database
+  has_callback: false
+  language: python
+  name: Awe-inspiring warp
+  retry_config: null
+  status: not_executed
+  timeout: null
+  type: data_exporter
+  upstream_blocks: []
+  uuid: awe_inspiring_warp
 cache_block_output_in_memory: false
 callbacks: []
 concurrency_config: {}

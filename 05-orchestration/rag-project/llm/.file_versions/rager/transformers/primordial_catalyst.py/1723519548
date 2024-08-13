@@ -13,7 +13,7 @@ def lemmatize_text(documents: List[Dict], *args, **kwargs) -> List[Dict]:
     data = []
 
     for idx, document in enumerate(documents):
-        document_id = document['documents']
+        document_id = document['document_id']
         if idx % 100 == 0:
             print(f'{idx + 1}/{count}')
 

@@ -1,19 +1,19 @@
 blocks:
-- all_upstream_blocks_executed: false
+- all_upstream_blocks_executed: true
   color: null
   configuration:
     file:
       content: null
       extension: py
       language: python
-      modified_timestamp: 1723284592
-      name: resonant_prism.py
+      modified_timestamp: 1723517644
+      name: wondrous_fission.py
       output: null
-      path: /home/src/llm/rager/data_loaders/resonant_prism.py
-      relative_path: llm/rager/data_loaders/resonant_prism.py
+      path: /home/src/llm/rager/data_loaders/wondrous_fission.py
+      relative_path: llm/rager/data_loaders/wondrous_fission.py
       size: 1550
     file_source:
-      path: rager/data_loaders/resonant_prism.py
+      path: rager/data_loaders/wondrous_fission.py
     templates:
       api:
         variables:
@@ -22,98 +22,134 @@ blocks:
           method: GET
           parser: null
           timeout: 30
-  downstream_blocks: []
+  downstream_blocks:
+  - galvanizing_continuum
   executor_config: null
   executor_type: local_python
   groups:
   - ingest
   has_callback: false
   language: python
-  name: Resonant prism
+  name: Wondrous fission
   retry_config: null
   status: executed
   timeout: null
   type: data_loader
-  upstream_blocks:
-  - seraphic_cipher
-  uuid: resonant_prism
-- all_upstream_blocks_executed: false
+  upstream_blocks: []
+  uuid: wondrous_fission
+- all_upstream_blocks_executed: true
   color: null
   configuration:
     file_source:
-      path: rager/transformers/seraphic_cipher.py
+      path: rager/transformers/galvanizing_continuum.py
   downstream_blocks:
-  - resonant_prism
+  - primordial_catalyst
   executor_config: null
   executor_type: local_python
   groups:
   - chunking
   has_callback: false
   language: python
-  name: Seraphic cipher
+  name: Galvanizing continuum
   retry_config: null
   status: executed
   timeout: null
   type: transformer
   upstream_blocks:
-  - astounding_chronos
-  uuid: seraphic_cipher
-- all_upstream_blocks_executed: false
+  - wondrous_fission
+  uuid: galvanizing_continuum
+- all_upstream_blocks_executed: true
   color: null
   configuration:
     file_source:
-      path: rager/transformers/astounding_chronos.py
+      path: rager/transformers/primordial_catalyst.py
     templates:
       lemmatization_spacy:
         variables:
           handle_stopwords: false
           language: en
           use_pos_tags: true
-  downstream_blocks:
-  - seraphic_cipher
+  downstream_blocks: []
   executor_config: null
   executor_type: local_python
   groups:
   - tokenization
   has_callback: false
   language: python
-  name: Astounding chronos
+  name: Primordial catalyst
   retry_config: null
-  status: executed
+  status: failed
   timeout: null
   type: transformer
   upstream_blocks:
-  - enigmatic_nexus
-  uuid: astounding_chronos
+  - galvanizing_continuum
+  uuid: primordial_catalyst
 - all_upstream_blocks_executed: true
   color: null
   configuration:
     file_source:
-      path: rager/transformers/enigmatic_nexus.py
+      path: rager/transformers/enchanting_paradox.py
     templates:
       spacy_embeddings:
         variables:
           model_name: en_core_web_sm
-  downstream_blocks:
-  - astounding_chronos
+  downstream_blocks: []
   executor_config: null
   executor_type: local_python
   groups:
   - embed
   has_callback: false
   language: python
-  name: Enigmatic nexus
+  name: Enchanting paradox
   retry_config: null
-  status: failed
+  status: not_executed
   timeout: null
   type: transformer
   upstream_blocks: []
-  uuid: enigmatic_nexus
+  uuid: enchanting_paradox
+- all_upstream_blocks_executed: true
+  color: null
+  configuration:
+    file:
+      content: null
+      extension: py
+      language: python
+      modified_timestamp: 1723518463
+      name: awe_inspiring_warp.py
+      output: null
+      path: /home/src/llm/rager/data_exporters/awe_inspiring_warp.py
+      relative_path: llm/rager/data_exporters/awe_inspiring_warp.py
+      size: 2054
+    file_source:
+      path: rager/data_exporters/awe_inspiring_warp.py
+    templates:
+      elasticsearch:
+        variables:
+          connection_string: http://elasticsearch:9200
+          dimensions: null
+          index_name: documents
+          number_of_replicas: 0
+          number_of_shards: 1
+          vector_column_name: embedding
+  downstream_blocks: []
+  executor_config: null
+  executor_type: local_python
+  groups:
+  - vector_database
+  has_callback: false
+  language: python
+  name: Awe-inspiring warp
+  retry_config: null
+  status: not_executed
+  timeout: null
+  type: data_exporter
+  upstream_blocks: []
+  uuid: awe_inspiring_warp
 cache_block_output_in_memory: false
 callbacks: []
 concurrency_config: {}
 conditionals: []
-created_at: '2024-08-10 10:09:37.766196+00:00'
+created_at: '2024-08-13 02:53:39.577024+00:00'
 data_integration: null
 description: null
 execution_framework: rag
@@ -121,7 +157,7 @@ executor_config: {}
 executor_count: 1
 executor_type: null
 extensions: {}
-name: Intergalactic eon
+name: Hypnotic eon
 notification_config: {}
 remote_variables_dir: null
 retry_config: {}
@@ -131,6 +167,6 @@ settings:
 spark_config: {}
 tags: []
 type: python
-uuid: intergalactic_eon
+uuid: hypnotic_eon
 variables_dir: /home/src/mage_data/rager
 widgets: []
